@@ -1,0 +1,15 @@
+Salas
+
+<br>
+<br>
+
+<form {{action "createGame" on="submit"}}>
+	<button>Nueva</button>
+</form>
+
+<div id="room-listing">
+	{{#each model as |room-listing|}}
+		{{#modernchess-room-listing room=room-listing}}
+		{{/modernchess-room-listing}}
+	{{/each}}
+</div>

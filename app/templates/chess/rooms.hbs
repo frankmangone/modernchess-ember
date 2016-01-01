@@ -1,0 +1,10 @@
+Salas
+
+<br />
+
+<div id="room-listing">
+	{{#each model as |room-listing|}}
+		{{#chess-room-listing room=room-listing}}
+		{{/chess-room-listing}}
+	{{/each}}
+</div>

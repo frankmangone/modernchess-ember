@@ -1,0 +1,154 @@
+body {
+	background-color: #F3EEE7;
+	width: 100%;
+	font-family: Arial;
+	margin: 0;
+}
+
+.ember-view {
+	width: 100%;
+}
+
+/* Typography, text styles & buttons */
+/* ----------------------------------------------------- */
+
+a {
+	color: #B36F4C;
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	color: #E0C5B7;
+}
+
+button {
+	background-color: #222;
+	border: none;
+	padding: 15px 30px;
+	color: #B36F4C;
+	font-size: 1em;
+}
+
+button:hover {
+	background-color: #444;
+	color: #E0C5B7;
+}
+
+/* Navigation bar */
+/* ----------------------------------------------------- */
+
+#navigation-bar {
+	width: 100%;
+	background-color: #222;
+}
+
+#navigation-bar ul {
+	display: flex;
+	padding-left: 15px;
+	margin: 0;
+}
+
+#navigation-bar ul li {
+	list-style-type: none;
+	padding: 15px;
+}
+
+#navigation-bar ul li a {
+
+}
+
+/* Content */
+/* ----------------------------------------------------- */
+
+#content {
+	padding: 30px;
+}
+
+
+/* Room listing */
+/* ----------------------------------------------------- */
+
+#room-listing {
+	width: 100%;
+}
+
+.room-item {
+	background-color: #222;
+	width: 100%;
+	margin: 10px 0;
+}
+
+.room-item p {
+	margin: 0;
+	color: #FFF;
+	padding: 15px 30px;
+}
+
+/* Game styles */
+/* ----------------------------------------------------- */
+
+#game-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#game {
+	
+}
+
+#board {
+	display: flex;
+	flex-direction: column;
+}
+
+#board .row {
+	display: flex;
+}
+
+#board .row .tile{
+	width: 60px;
+	height: 60px;
+}
+
+#board .row .white{
+	background-color: #DBCBB6;
+}
+
+#board .row .black{
+	background-color: #B8976E;
+}
+
+.tile .tile-dim {
+	width: 60px;
+	height: 60px;
+}
+/* When movements are allowed: */
+
+.tile-move {
+	background-color: rgba(255, 255, 0, 0.3);
+}
+
+.tile-take {
+	background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* ------- */
+
+#pieces-wrapper {
+	position: relative;
+	/* Moved dynamically on load */
+}
+
+.piece {
+	position: absolute;
+	z-index: 100;
+	width: 60px;
+	height: 60px;
+}
+
+.piece img {
+	margin: 2px;
+	width: 56px;
+	height: 56px;
+}

@@ -1,0 +1,13 @@
+<div id="game-wrapper">	
+	<div id="game">
+		{{modernchess-board}}
+
+		<div id="pieces-wrapper">
+			{{#each pieces as |piece|}}
+				<div class="piece" id={{piece.name}}>
+					<img src={{piece.path}} />
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</div>
