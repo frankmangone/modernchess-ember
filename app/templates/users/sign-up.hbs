@@ -1,0 +1,43 @@
+<h4>Registro</h4>
+
+<hr>
+<br>
+{{#each errors as |error|}}
+	{{error.detail}}
+	<br>
+{{/each}}
+<br>
+
+<form {{action "createUser" on="submit"}}>
+	<div id="registration-form">
+		<div class="form-column">
+			<div class="field">
+				<label>Nombre</label>
+				{{input value=name}}
+			</div>
+
+			<div class="field">
+				<label>Email</label>
+				{{input value=email}}
+			</div>
+		</div>
+
+		<div class="v-separator"></div>
+
+		<div class="form-column">
+			<div class="field">
+				<label>Contraseña</label>
+				{{input value=password type="password"}}
+			</div>
+
+			<div class="field">	
+				<label>Confirmar Contraseña</label>
+				{{input value=password_confirmation type="password"}}
+			</div>
+		</div>
+
+		<div class="h-separator"></div>
+
+		<button>Registrarse</button>
+	</div>
+</form>

@@ -9,6 +9,15 @@ body {
 	width: 100%;
 }
 
+#content {
+	padding: 30px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
 /* Typography, text styles & buttons */
 /* ----------------------------------------------------- */
 
@@ -24,9 +33,10 @@ a:hover, a:focus {
 button {
 	background-color: #222;
 	border: none;
-	padding: 15px 30px;
+	padding: 15px 20px;
 	color: #B36F4C;
 	font-size: 1em;
+	cursor: pointer;
 }
 
 button:hover {
@@ -34,12 +44,16 @@ button:hover {
 	color: #E0C5B7;
 }
 
+
+
 /* Navigation bar */
 /* ----------------------------------------------------- */
 
 #navigation-bar {
 	width: 100%;
 	background-color: #222;
+	display: flex;
+	justify-content: space-between;
 }
 
 #navigation-bar ul {
@@ -57,12 +71,48 @@ button:hover {
 
 }
 
-/* Content */
+
+
+/* Forms */
 /* ----------------------------------------------------- */
 
-#content {
-	padding: 30px;
+label {
+	font-size: 1.1em;
 }
+
+input {
+	height: 30px;
+	border: 1px solid #DDD;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 5px 10px;
+	margin-left: -5px;
+	margin-right: -5px;
+	font-size: 1em;
+	color: #666;
+}
+
+/* ------- */
+
+#registration-form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#registration-form .v-separator {
+	width: 8%;
+}
+
+#registration-form .h-separator {
+	width: 100%;
+	height: 10px;
+}
+
+#registration-form .form-column {
+	width: 46%;
+}
+
 
 
 /* Room listing */
@@ -76,13 +126,48 @@ button:hover {
 	background-color: #222;
 	width: 100%;
 	margin: 10px 0;
+	display: flex;
+	justify-content: space-between;
 }
 
 .room-item p {
 	margin: 0;
 	color: #FFF;
-	padding: 15px 30px;
+	padding: 15px 0 15px 20px;
 }
+
+/* Side bar */
+
+.room-item .side-bar {
+	display: flex;
+}
+
+.room-item .actions a {
+	background-color: #222;
+	border: none;
+	padding: 15px 20px;
+	color: #B36F4C;
+	font-size: 1em;
+}
+
+.room-item .actions a:hover {
+	background-color: #444;
+	color: #E0C5B7;
+}
+
+.room-item .turn-marker {
+	height: 48px;
+}
+
+.room-item .CAP {
+	border-left: 8px solid #049D51;
+}
+
+.room-item .COM {
+	border-left: 8px solid #A1001A;
+}
+
+
 
 /* Game styles */
 /* ----------------------------------------------------- */

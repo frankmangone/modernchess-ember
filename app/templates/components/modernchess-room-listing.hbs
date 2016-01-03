@@ -1,3 +1,12 @@
 <div class="room-item">
-	<p>Jugador - {{#link-to "modernchess.room" room.id}}Entrar a la sala{{/link-to}}</p>
+	<div class="game-info">
+		<p>Jugador</p>
+	</div>
+	<div class="side-bar">
+		<div class="actions">
+			{{#link-to "modernchess.room" room.id}}Entrar{{/link-to}}
+			<button {{action "deleteClick" on="click"}}>&times;</button>
+		</div>
+		<div class="turn-marker {{room.turn}}"></div>
+	</div>
 </div>

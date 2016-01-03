@@ -1,0 +1,29 @@
+<h4>Acceso de usuario</h4>
+
+<hr>
+<br>
+{{#each errors as |error|}}
+	{{error.detail}}
+	<br>
+{{/each}}
+<br>
+
+<form {{action "createSession" on="submit"}}>
+	<div id="registration-form">
+		<div class="form-column">
+			<div class="field">
+				<label>Email</label>
+				{{input value=email}}
+			</div>
+
+			<div class="field">
+				<label>Contraseña</label>
+				{{input value=password type="password"}}
+			</div>
+		</div>
+
+		<div class="h-separator"></div>
+
+		<button>Log in</button>
+	</div>
+</form>

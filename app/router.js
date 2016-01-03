@@ -6,6 +6,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  // Users
+  this.route('users', function(){
+    this.route('sign_up');
+    this.route('log_in');
+    this.route('user', { path: ':user_id' });
+  });
+  
   // Modern Chess
   this.route('modernchess', function(){
   	this.route('rooms');
