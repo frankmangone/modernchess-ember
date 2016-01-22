@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
 		this.dispatcher.trigger('api.v1.modernchess.load_room', { "id": room_id });
 
 		this.dispatcher.bind('load_room_response', (response) => { this.handleRoomLoad(response) });
-		this.dispatcher.bind('moves_response', (response) => { this.handleMovesResponse(response) });
+		this.dispatcher.bind('moves_response',     (response) => { this.handleMovesResponse(response) });
 
 		this.channel = this.dispatcher.subscribe(room_id);
 		this.channel.bind('move_done', (response) => { this.handleMoveDone(response) });
@@ -57,7 +57,6 @@ export default Ember.Controller.extend({
 			var column = Math.ceil( x / tile_side );
 
 			var action = this.board_processor.handleTileClick(row, column);
-
 			this.sendActionToServer(action);
 		});
 	},
@@ -112,6 +111,14 @@ export default Ember.Controller.extend({
 	handleMoveDone(response) {
 		this.board_processor.disableActiveTiles();
 		this.board_processor.useResponseToMakeMove(response);
+		this.controlPiecesArray();
+	},
+
+	controlPiecesArray() {
+		if(this.get('pieces') !== this.board_processor.pieces) {
+			this.set('pieces', this.board_processor.pieces);
+			this.board_processor.positionAllPieces();
+		}
 	}
 
 });

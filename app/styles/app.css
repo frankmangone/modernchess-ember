@@ -192,8 +192,8 @@ input {
 }
 
 #board .row .tile{
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 }
 
 #board .row .white{
@@ -205,8 +205,8 @@ input {
 }
 
 .tile .tile-dim {
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 }
 /* When movements are allowed: */
 
@@ -216,6 +216,10 @@ input {
 
 .tile-take {
 	background-color: rgba(255, 0, 0, 0.3);
+}
+
+.tile-convert {
+	background-color: rgba(12, 160, 251, 0.3);
 }
 
 /* ------- */
@@ -228,12 +232,12 @@ input {
 .piece {
 	position: absolute;
 	z-index: 100;
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 }
 
 .piece img {
 	margin: 2px;
-	width: 56px;
-	height: 56px;
+	width: 66px;
+	height: 66px;
 }

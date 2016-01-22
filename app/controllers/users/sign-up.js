@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	errors: [],
-
+	
 	actions: {
 		createUser() {
 			var user = this.get('store').createRecord('user', {

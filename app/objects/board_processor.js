@@ -99,10 +99,13 @@ export default Ember.Object.extend({
 
 	// Making a move:
 
-	useResponseToMakeMove(move) {
-		var source = move.source;
-		var target = move.target;
+	useResponseToMakeMove(response) {
+		var source = response.source;
+		var target = response.target;
 		var action = target.action;
+		
+		// Maybe move this line to somewhere else?
+		this.set('board', response.board);
 		
 		switch(action) {
 			case "MOVE":
@@ -110,6 +113,9 @@ export default Ember.Object.extend({
 				break;
 			case "TAKE":
 				this.pieceTake(source, target);
+				break;
+			case "CONVERT":
+				this.pieceConvert(source, target);
 				break;
 		}
 	},
@@ -125,6 +131,15 @@ export default Ember.Object.extend({
 		this.deletePiece(target.row, target.column);
 		this.updatePiece(source.row, source.column, target.row, target.column);
 		this.positionPiece(piece.name, target.row, target.column);
+	},
+
+	pieceConvert(source, target) {
+		// MAKE THIS ALGORITHM BETTER FOR GOD'S SAKE!!!!!
+		this.deletePiece(target.row, target.column);
+		this.createPiecesArray();
+		Ember.run.scheduleOnce('afterRender', this, () => {
+			this.positionAllPieces();
+		});
 	},
 
 
@@ -157,7 +172,12 @@ export default Ember.Object.extend({
 		// I need to somehow trigger the events on the server, maybe this logic SHOULD go in the controller...
 	},
 
+
+
+
+
 	showAllMoves(moves) {
+		console.log(moves);
 		for(var i = 0; i < moves.length; i++) {
 			this.showMove( moves[i] );
 		}
@@ -179,8 +199,14 @@ export default Ember.Object.extend({
 			case "TAKE":
 				$tile_dim.addClass("tile-take");
 				break;
+			case "CONVERT":
+				$tile_dim.addClass("tile-convert");
+				break;
 		}
 	},
+
+
+
 
 	validMove(row, column){
 		var clicked_tile = [row, column];
@@ -201,7 +227,8 @@ export default Ember.Object.extend({
 			var column = this.active_tiles[i][1];
 			var $tile = $("#tile-"+row+"-"+column);
 
-			$tile.find(".tile-dim").removeClass("tile-move").removeClass("tile-take");
+			$tile.find(".tile-dim").removeClass("tile-move").removeClass("tile-take")
+														 .removeClass("tile-convert");
 		}
 		this.set('active_tiles', []);
 	},
@@ -257,6 +284,10 @@ export default Ember.Object.extend({
 		return index;
 	},
 
+	pieceBoardIndex(row, column) {
+		return ( (row - 1)*this.get('row_size') + column );
+	},
+
 	updatePiece(row, column, new_row, new_column) {
 		var pieces = this.get('pieces');
 		var index = this.pieceIndex(row, column);
@@ -273,15 +304,6 @@ export default Ember.Object.extend({
 		this.set('pieces', pieces);
 		// Also delete the piece in the view;
 		$("#"+name).remove();
-	},
-
-
-
-	isEmpty(arr) {
-		if(arr.length === 0) {
-			return true;
-		}
-		return false;
 	}
 
 });
